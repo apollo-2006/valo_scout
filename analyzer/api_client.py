@@ -1,4 +1,3 @@
-import requests
 import random
 from typing import List, Dict
 
@@ -10,11 +9,16 @@ class ValorantAPI:
 
     def fetch_recent_matches(self, player_name: str, tag: str) -> List[Dict]:
         """
-        Mocks fetching the last 20 matches for the Ascendant/Diamond tier.
+        Generates 20 synthetic matches in the Ascendant/Diamond range.
+
+        This is mock data, not a live fetch. Wiring it to the real API means
+        replacing the body below with:
+
+            import requests
+            response = requests.get(f"{self.base_url}/matches/na/{player_name}/{tag}",
+                                    headers={"Authorization": self.api_key})
+            return response.json()["data"]
         """
-        # In a production environment, you would use:
-        # response = requests.get(f"{self.base_url}/matches/na/{player_name}/{tag}")
-        # return response.json()['data']
 
         matches = []
         maps = ["Ascent", "Bind", "Haven", "Split", "Lotus"]
